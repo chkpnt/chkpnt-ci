@@ -1,0 +1,16 @@
+[Unit]
+Description=SonarQube (chkpnt-ci)
+After=network.service docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+RestartSec=10
+TimeoutSec=300
+WorkingDirectory=/opt/chkpnt-ci
+ExecStart=/usr/bin/docker-compose up
+ExecStop=/usr/bin/docker-compose down
+
+[Install]
+WantedBy=docker.target
+
